@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% load static %}
+
+{% endblock css %}
+
+{% block content %}
+<div class="section_home">
+    <div class="form-header">
+        <div class="section-header">
+            <img src="{% static "a96c0a59-5fd4-4ee2-af83-a694928c9257.png" %}" class="mySlides img img-responsive">
+            <img src="{% static "b962e40d-9df2-4614-9a31-9531200133e2.png" %}" class="mySlides img img-responsive">
+        </div>
+    </div>
+
+
+    <div class="section_login_signup">
+        <div class="signup_login_only">
+            <div class="btn-register">
+                <a href="{% url 'account:signup' %}">
+                    <button class="btn">Register</button>
+                </a>
+            </div>
+            <div class="btn-login">
+                <a href="{% url 'account:login' %}">
+                    <button class="btn">Sign in</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-footer">
+        <div class="allauth-login">
+            <div class="header">
+                <h6 style="color: white;">or Join us with</h6>
+            </div>
+
+            <div class="login-allauth">
+                <a href="" class="btn btn-facebook-allauth"><span class=""><i class="fa fa-facebook"></i></span></a>
+                <a href="" class="btn btn-outline-danger"><i class="fa fa-google"></i><span
+                        class="">   Google</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+<script type="text/javascript">
+    var myIndex = 0;
+            carousel();
+
+            function carousel(){
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+
+                for (i=0; i< x.length; i++){
+                    x[i].style.display = "none";
+                }
+                myIndex++;
+                if (myIndex > x.length){
+                    myIndex = 1
+                }
+                x[myIndex-1].style.display = "block";
+                setTimeout(carousel, 9000);
+            }
+</script>
+
+{% endblock js %}

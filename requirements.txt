@@ -1,0 +1,8 @@
+admin==0.0.1
+asgiref==3.2.10
+Django==3.0.8
+django-debug-toolbar==2.2
+path==14.0.1
+python-decouple==3.3
+pytz==2020.1
+sqlparse==0.3.1

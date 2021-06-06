@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'js-date-picker/daterangepicker.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="container">
+
+            <div class="form-outer">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="page slide-page">
+                        <div class="title">
+                            What's your name?
+                        </div>
+
+                        <div class="field">
+                            <input type="text" placeholder="First name" name="first_name" required />&nbsp;&nbsp;&nbsp;
+                            <input type="text" placeholder="Last name" name="last_name" required />
+                        </div>
+                        <div class="field">
+                            <input type="text" placeholder="Username" name="username" required />
+                        </div>
+
+                        <div class="field">
+                            <button type="button" class="firstNext next">Next</button>
+                        </div>
+                    </div>
+                    <div class="page">
+
+                        <div class="title">
+                            Keep up with Business offers
+                        </div>
+                        <div class="field">
+                            <input type="text" placeholder="Enter your email" name="email" required />
+                        </div>
+                        <div class="field">
+                            <input type="Number" placeholder="Phone Number" name="phone_number" required />
+                        </div>
+
+                        <div class="field btns">
+                            <button class="prev-1 prev">Previous</button>
+                            <button type="button" class="next-1 next">Next</button>
+                        </div>
+
+                    </div>
+                    <div class="page">
+                        <div class="title">
+                            Let's know you better
+                        </div>
+
+                        <div class="field">
+                            <input type="text" autocomplete="none" name="birthday" required placeholder="Date of birth" class="input--style-2 js-datepicker">
+                        </div>
+
+                        <div class="field">
+                            <select name="gender">
+                                <option disabled>Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+
+                        <div class="field btns">
+                            <button class="prev-2 prev">Previous</button>
+                            <button type="button" class="next-2 next">Next</button>
+                        </div>
+
+                    </div>
+                    <div class="page">
+                        <div class="title">
+                            Secure your Account
+                        </div>
+
+                        <div class="field">
+                            <input type="password" placeholder="Enter your Password" name="password" />
+                        </div>
+
+                        <div class="field">
+                            <input type="password" placeholder="Confirm your Password" name="password_repeat" />
+                        </div>
+
+                        <div class="field btns">
+                            <button class="prev-3 prev btn btn-default">Previous</button>
+                            <button type="submit">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                {% include 'account/includes/footer_data.html' %}
+            </div>
+
+{% endblock content %}
+
+{% block js %}
+ {% load static %}
+
+<script type="text/javascript">
+
+const slidePage = document.querySelector(".slide-page");
+const nextBtnFirst = document.querySelector(".firstNext");
+const prevBtnSec = document.querySelector(".prev-1");
+const nextBtnSec = document.querySelector(".next-1");
+const prevBtnThird = document.querySelector(".prev-2");
+const nextBtnThird = document.querySelector(".next-2");
+const prevBtnFourth = document.querySelector(".prev-3");
+const submitBtn = document.querySelector(".submit");
+const progressText = [...document.querySelectorAll(".step p")];
+const progressCheck = [...document.querySelectorAll(".step .check")];
+const bullet = [...document.querySelectorAll(".step .bullet")];
+let max = 4;
+let current = 1;
+
+nextBtnFirst.addEventListener("click", function(){
+  slidePage.style.marginLeft = "-25%";
+  bullet[current - 1].classList.add("active");
+  progressCheck[current - 1].classList.add("active");
+  progressText[current - 1].classList.add("active");
+  current += 1;
+});
+nextBtnSec.addEventListener("click", function(){
+  slidePage.style.marginLeft = "-50%";
+  bullet[current - 1].classList.add("active");
+  progressCheck[current - 1].classList.add("active");
+  progressText[current - 1].classList.add("active");
+  current += 1;
+});
+nextBtnThird.addEventListener("click", function(){
+  slidePage.style.marginLeft = "-75%";
+  bullet[current - 1].classList.add("active");
+  progressCheck[current - 1].classList.add("active");
+  progressText[current - 1].classList.add("active");
+  current += 1;
+});
+submitBtn.addEventListener("click", function(){
+  bullet[current - 1].classList.add("active");
+  progressCheck[current - 1].classList.add("active");
+  progressText[current - 1].classList.add("active");
+  current += 1;
+  setTimeout(function(){
+    alert("Your Form Successfully Signed up");
+    location.reload();
+  },800);
+});
+
+prevBtnSec.addEventListener("click", function(){
+  slidePage.style.marginLeft = "0%";
+  bullet[current - 2].classList.remove("active");
+  progressCheck[current - 2].classList.remove("active");
+  progressText[current - 2].classList.remove("active");
+  current -= 1;
+});
+prevBtnThird.addEventListener("click", function(){
+  slidePage.style.marginLeft = "-25%";
+  bullet[current - 2].classList.remove("active");
+  progressCheck[current - 2].classList.remove("active");
+  progressText[current - 2].classList.remove("active");
+  current -= 1;
+});
+prevBtnFourth.addEventListener("click", function(){
+  slidePage.style.marginLeft = "-50%";
+  bullet[current - 2].classList.remove("active");
+  progressCheck[current - 2].classList.remove("active");
+  progressText[current - 2].classList.remove("active");
+  current -= 1;
+});
+
+ </script>
+
+
+
+
+ <script type="text/javascript" src="{% static 'js-date-picker/moment.min.js' %}"></script>
+ <script type="text/javascript" src="{% static 'js-date-picker/daterangepicker.js' %}"></script>
+ <script type="text/javascript" src="{% static 'js-date-picker/global.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable = no">
+    <title>{% block title %} Hookap Official {% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+    {% block css %}
+    {% endblock css %}
+
+</head>
+<body>
+{% block content %}
+{% endblock %}
+
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+<script type="text/javascript">
+        $("#form-toggle #toggle_data").on("focus", function(){
+            $(this).addClass("focus");
+        });
+        $("#form-toggle #toggle_data").on("blur", function(){
+            if ($(this).val() == ""){
+               $(this).removeClass("focus");
+            }else{
+                $(this).addClass("focus");
+            }
+        });
+
+</script>
+
+{% block js %}
+{% endblock js %}
+</body>
+</html>
